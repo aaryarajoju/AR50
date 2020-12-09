@@ -1,0 +1,19 @@
+{
+  "name": "ar50",
+  "version": "1.0.0",
+  "description": "a discord bot, as the final project for cs50x",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaryarajoju/AR50.git"
+  },
+  "author": "AARYA RAJOJU",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaryarajoju/AR50/issues"
+  },
+  "homepage": "https://github.com/aaryarajoju/AR50#readme"
+}
