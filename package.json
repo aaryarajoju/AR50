@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/aaryarajoju/AR50/issues"
   },
-  "homepage": "https://github.com/aaryarajoju/AR50#readme"
+  "homepage": "https://github.com/aaryarajoju/AR50#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
 }
