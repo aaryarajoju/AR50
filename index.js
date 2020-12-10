@@ -2,12 +2,8 @@ const Discord = require("discord.js");
 const {prefix, token, apikey} = require('./config.json');
 const client = new Discord.Client;
 const https = require('https');
-
-// const url = "https://www.alphavantage.co/query?";
-// const url_function = "function=TIME_SERIES_INTRADAY"
-// const url_symbol = "symbol=";
-// const url_interval = "interval=5min";
-// const url_key = "apikey=" + apikey;
+const url = "https://www.alphavantage.co/query?interval=5min&function=TIME_SERIES_INTRADAY&symbol=";
+const url_key = "&apikey=" + apikey;
 
 client.once('ready', () => {
     console.log("The bot is online! Connected as " + client.user.tag);
@@ -34,41 +30,41 @@ function processCommand(receivedMessage){
     let primaryCommand = splitCommand[0];
     let arguements = splitCommand.slice(1);
 
-    if (primaryCommand == "help"){
+    if (primaryCommand.toLowerCase() == "help"){
         helpCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "multiply"){
+    } else if(primaryCommand.toLowerCase() == "multiply"){
         multiplyCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "add"){
+    } else if(primaryCommand.toLowerCase() == "add"){
         addCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "difference"){
+    } else if(primaryCommand.toLowerCase() == "difference"){
         diffCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "subtract"){
+    } else if(primaryCommand.toLowerCase() == "subtract"){
         subtractCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "divide"){
+    } else if(primaryCommand.toLowerCase() == "divide"){
         divideCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "sq_area"){
+    } else if(primaryCommand.toLowerCase() == "sq_area"){
         squareAreaCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "rect_area"){
+    } else if(primaryCommand.toLowerCase() == "rect_area"){
         rectangleAreaCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "circle_area"){
+    } else if(primaryCommand.toLowerCase() == "circle_area"){
         circleAreaCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "sq_perimeter"){
+    } else if(primaryCommand.toLowerCase() == "sq_perimeter"){
         squarePerimeterCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "rect_perimeter"){
+    } else if(primaryCommand.toLowerCase() == "rect_perimeter"){
         rectanglePerimeterCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "circle_perimeter"){
+    } else if(primaryCommand.toLowerCase() == "circle_perimeter"){
         circlePerimeterCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "factorial"){
+    } else if(primaryCommand.toLowerCase() == "factorial"){
         factorialCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "square"){
+    } else if(primaryCommand.toLowerCase() == "square"){
         squareCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "sqrt"){
+    } else if(primaryCommand.toLowerCase() == "sqrt"){
         squarerootCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "power"){
+    } else if(primaryCommand.toLowerCase() == "power"){
         powerCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "stock"){
+    } else if(primaryCommand.toLowerCase() == "stock"){
         stockCommand(arguements, receivedMessage);
-    } else if(primaryCommand == "buy"){
+    } else if(primaryCommand.toLowerCase() == "buy"){
         buyCommand(arguements, receivedMessage);
     } else {
         receivedMessage.channel.send("Unknown command. \n\n Try  `50!-help`  for the commands");
@@ -81,28 +77,28 @@ function helpCommand(arguements, receivedMessage){
     } else {
         // receivedMessage.channel.send("help is on its way");
         receivedMessage.channel.send("The following commands are available: \n\n" +
-                                    "`50!-add` - adds two or more numbers \n" +
-                                    "`50!-multiply` - multiplies two or more numbers \n" +
-                                    "`50!-difference` - calculates the diference between two numbers \n" +
-                                    "`50!-divide` - divides two numbers \n" +
-                                    "`50!-subtract` - subtracts two numbers \n\n" +
-                                    "`50!-sq_area` - calculates the area of a square \n" +
-                                    "`50!-rect_area` - calculates the area of a rectangle \n" +
-                                    "`50!-cicle_area` - calculates the area of a circle \n" +
-                                    "`50!-sq_perimeter` - calculates the perimeter of a square \n" +
-                                    "`50!-rect_perimeter` - calculates the perimeter of a rectangle \n" +
-                                    "`50!-circle_perimeter` - calculates the perimeter of a circle \n\n" +
-                                    "`50!-factorial` - calculates the factorial of a number \n" +
-                                    "`50!-square` - calculates the square of a number \n" +
-                                    "`50!-sqrt` - calculates the square-root of a number \n" +
-                                    "`50!-power` - calculates the value of raising a number to the power of another number \n\n" //+
-                                    // "`50!-stock` - gets the stock price \n" +
-                                    // "`50!-buy` - gets the price and a buying link of a product \n" +
-                                    // "`50!-add` - adds two or more numbers \n" +
-                                    // "`50!-add` - adds two or more numbers \n" +
-                                    // "`50!-add` - adds two or more numbers \n" +
-                                    // "`50!-add` - adds two or more numbers \n"                                         
-                                    );
+            "`50!-add` - adds two or more numbers \n" +
+            "`50!-multiply` - multiplies two or more numbers \n" +
+            "`50!-difference` - calculates the diference between two numbers \n" +
+            "`50!-divide` - divides two numbers \n" +
+            "`50!-subtract` - subtracts two numbers \n\n" +
+            "`50!-sq_area` - calculates the area of a square \n" +
+            "`50!-rect_area` - calculates the area of a rectangle \n" +
+            "`50!-cicle_area` - calculates the area of a circle \n" +
+            "`50!-sq_perimeter` - calculates the perimeter of a square \n" +
+            "`50!-rect_perimeter` - calculates the perimeter of a rectangle \n" +
+            "`50!-circle_perimeter` - calculates the perimeter of a circle \n\n" +
+            "`50!-factorial` - calculates the factorial of a number \n" +
+            "`50!-square` - calculates the square of a number \n" +
+            "`50!-sqrt` - calculates the square-root of a number \n" +
+            "`50!-power` - calculates the value of raising a number to the power of another number \n\n" +
+            "`50!-stock` - gets the stock price with a trading symbol\n" //+
+            // "`50!-buy` - gets the price and a buying link of a product \n" +
+            // "`50!-add` - adds two or more numbers \n" +
+            // "`50!-add` - adds two or more numbers \n" +
+            // "`50!-add` - adds two or more numbers \n" +
+            // "`50!-add` - adds two or more numbers \n"                                         
+        );
     }
 }
 
@@ -115,9 +111,7 @@ function stockCommand(arguements, receivedMessage){
         return;
     }
 
-    // let url_req = url + url_function + "&" + url_symbol + arguements[0] + "&" + url_interval + "&" + url_key
-
-    https.get('https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=L9Q3VSYIF1UYTEL2', (resp) => {
+    https.get((url + arguements[0] + url_key), (resp) => {
         let data = '';
 
         resp.on('data', (chunk) => {
@@ -125,12 +119,16 @@ function stockCommand(arguements, receivedMessage){
         });
       
         resp.on('end', () => {
-            receivedMessage.channel.send(JSON.parse(data).toString());
+
+            let data_obj = JSON.parse(data);
+            let lastRefresh = data_obj["Meta Data"]["3. Last Refreshed"];
+            let price = data_obj["Time Series (5min)"][lastRefresh]["4. close"];
+
+            receivedMessage.channel.send(price);
         });    
     }).on("error", (err) => {
         receivedMessage.channel.send("Error: " + err.message);
     });
-
 }
 
 function buyCommand(arguements, receivedMessage){
