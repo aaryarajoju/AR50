@@ -18,5 +18,6 @@
   "homepage": "https://github.com/aaryarajoju/AR50#readme",
   "dependencies": {
     "discord.js": "^12.5.1"
-  }
+  },
+  "keywords": []
 }
