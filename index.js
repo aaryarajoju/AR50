@@ -24,6 +24,7 @@ client.on('message', (receivedMessage) => {
     }
 })
 
+
 function processCommand(receivedMessage){
     let fullCommand = receivedMessage.content.substr(prefix.length);
     let splitCommand = fullCommand.split(" ");
