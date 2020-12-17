@@ -182,7 +182,7 @@ function powerCommand(arguements, receivedMessage){
     if (arguements.length !== 2){
         receivedMessage.channel.send("Two arguements are required. " + 
         "The number of arguements given are " + arguements.length + 
-        "\n Try `50!-square 10`");
+        "\n Try `50!-power 10 3`");
         return;
     }
 
@@ -208,7 +208,7 @@ function rectanglePerimeterCommand(arguements, receivedMessage){
     if (arguements.length !== 2){
         receivedMessage.channel.send("Two arguements are required. " + 
         "The number of arguements given are " + arguements.length + 
-        "\n Try `50!-rect_perimeter 10`");
+        "\n Try `50!-rect_perimeter 10 8`");
         return;
     }
 
@@ -247,7 +247,7 @@ function rectangleAreaCommand(arguements, receivedMessage){
     if (arguements.length !== 2){
         receivedMessage.channel.send("Two arguements are required. " + 
         "The number of arguements given are " + arguements.length + 
-        "\n Try `50!-rect_area 10`");
+        "\n Try `50!-rect_area 10 7`");
         return;
     }
 
@@ -273,7 +273,7 @@ function divideCommand(arguements, receivedMessage){
     if (arguements.length < 2){
         receivedMessage.channel.send("Two arguements are required. " + 
         "The number of arguements given are " + arguements.length + 
-        "\n Try `50!-divide 2 10`");
+        "\n Try `50!-divide 10 2`");
         return;
     } 
 
@@ -302,7 +302,7 @@ function diffCommand(arguements, receivedMessage){
     if (arguements.length !== 2){
         receivedMessage.channel.send("Two arguements are required. " + 
         "The number of arguements given are " + arguements.length + 
-        "\n Try `50!-difference 2 10`");
+        "\n Try `50!-difference 35 23`");
         return;
     }
 
@@ -315,7 +315,7 @@ function subtractCommand(arguements, receivedMessage){
     if (arguements.length !== 2){
         receivedMessage.channel.send("Two arguements are required. " + 
         "The number of arguements given are " + arguements.length + 
-        "\n Try `50!-subtract 2 10`");
+        "\n Try `50!-subtract 94 34`");
         return;
     }
 
