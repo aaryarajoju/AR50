@@ -125,7 +125,7 @@ function stockCommand(arguements, receivedMessage){
             let lastRefresh = data_obj["Meta Data"]["3. Last Refreshed"];
             let price = data_obj["Time Series (5min)"][lastRefresh]["4. close"];
 
-            receivedMessage.channel.send(price);
+            receivedMessage.channel.send("$ " + price);
         });    
     }).on("error", (err) => {
         receivedMessage.channel.send("Error: " + err.message);
