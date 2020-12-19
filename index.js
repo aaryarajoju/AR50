@@ -68,8 +68,6 @@ function processCommand(receivedMessage){
         powerCommand(arguements, receivedMessage);
     } else if(primaryCommand.toLowerCase() == "stock"){
         stockCommand(arguements, receivedMessage);
-    } else if(primaryCommand.toLowerCase() == "buy"){
-        buyCommand(arguements, receivedMessage);
     } else if(primaryCommand.toLowerCase() == "weather"){
         weatherCommand(arguements, receivedMessage);
     } else {
@@ -99,21 +97,17 @@ function helpCommand(arguements, receivedMessage){
             "`50!-sqrt` - calculates the square-root of a number \n" +
             "`50!-power` - calculates the value of raising a number to the power of another number \n\n" +
             "`50!-stock` - gets the stock price with a trading symbol\n\n" +
-            "`50!-weather` - gets the current weather of a place \n" //+
-            // "`50!-add` - adds two or more numbers \n" +
-            // "`50!-add` - adds two or more numbers \n" +
-            // "`50!-add` - adds two or more numbers \n" +
-            // "`50!-add` - adds two or more numbers \n"                                         
+            "`50!-weather` - gets the current weather of a place \n"                                       
         );
     }
 }
 
 
 function weatherCommand(arguements, receivedMessage){
-    if (arguements.length !== 1){
-        receivedMessage.channel.send("One arguement is required. " + 
+    if (arguements.length < 1){
+        receivedMessage.channel.send("Atleast one arguement is required. " + 
         "The number of arguements given are " + arguements.length + 
-        "\n Try `50!-weather London`");
+        "\n Try `50!-weather Paris`");
         return;
     }
 
@@ -129,10 +123,19 @@ function weatherCommand(arguements, receivedMessage){
             let data_obj = JSON.parse(data);
             let currentTempInC = data_obj["current"]["temp_c"];
             let currentTempInF = data_obj["current"]["temp_f"];
+            let feelsLikeTempInC = data_obj["current"]["feelslike_c"];
+            let feelsLikeTempInF = data_obj["current"]["feelslike_f"];
             let condition = data_obj["current"]["condition"]["text"];
 
-            receivedMessage.channel.send("The current weather at " + arguements[0] + " is  **" + condition + 
-                "**. \nThe current temperature is  **" + currentTempInC + "°C  /  " + currentTempInF + "°F**");
+            let imageLink = "https:" + data_obj["current"]["condition"]["icon"];
+            console.log(imageLink);
+            let embedIcon = new Discord.MessageEmbed().setImage(imageLink);
+
+            receivedMessage.channel.send(embedIcon);
+            receivedMessage.channel.send( 
+                "\nThe current weather at " + arguements[0] + " is  **" + condition + 
+                "**. \nThe current temperature is  **" + currentTempInC + "°C**  /  **" + currentTempInF + 
+                "°F**. \nIt feels like **" + feelsLikeTempInC + "°C**  /  **" + feelsLikeTempInF + "°F**");
         });    
     }).on("error", (err) => {
         receivedMessage.channel.send("Error: " + err.message);
@@ -165,10 +168,6 @@ function stockCommand(arguements, receivedMessage){
     }).on("error", (err) => {
         receivedMessage.channel.send("Error: " + err.message);
     });
-}
-
-function buyCommand(arguements, receivedMessage){
-    
 }
 
 function factorialCommand(arguements, receivedMessage){
