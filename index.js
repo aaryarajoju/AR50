@@ -1,9 +1,12 @@
 const Discord = require("discord.js");
-const {prefix, token, apikey} = require('./config.json');
+const {prefix, token, stockApiKey, weatherApiKey} = require('./config.json');
 const client = new Discord.Client;
 const https = require('https');
-const url = "https://www.alphavantage.co/query?interval=5min&function=TIME_SERIES_INTRADAY&symbol=";
-const url_key = "&apikey=" + apikey;
+const stockUrl = "https://www.alphavantage.co/query?interval=5min&function=TIME_SERIES_INTRADAY&symbol=";
+const stockUrl_key = "&apikey=" + stockApiKey;
+const weatherUrl = "https://api.weatherapi.com/v1/current.json?q=";
+const weatherUrl_key = "&key=" + weatherApiKey;
+
 
 client.once('ready', () => {
     console.log("The bot is online! Connected as " + client.user.tag);
@@ -67,6 +70,8 @@ function processCommand(receivedMessage){
         stockCommand(arguements, receivedMessage);
     } else if(primaryCommand.toLowerCase() == "buy"){
         buyCommand(arguements, receivedMessage);
+    } else if(primaryCommand.toLowerCase() == "weather"){
+        weatherCommand(arguements, receivedMessage);
     } else {
         receivedMessage.channel.send("Unknown command. \n\n Try  `50!-help`  for the commands");
     }
@@ -93,8 +98,8 @@ function helpCommand(arguements, receivedMessage){
             "`50!-square` - calculates the square of a number \n" +
             "`50!-sqrt` - calculates the square-root of a number \n" +
             "`50!-power` - calculates the value of raising a number to the power of another number \n\n" +
-            "`50!-stock` - gets the stock price with a trading symbol\n" //+
-            // "`50!-buy` - gets the price and a buying link of a product \n" +
+            "`50!-stock` - gets the stock price with a trading symbol\n\n" +
+            "`50!-weather` - gets the current weather of a place \n" //+
             // "`50!-add` - adds two or more numbers \n" +
             // "`50!-add` - adds two or more numbers \n" +
             // "`50!-add` - adds two or more numbers \n" +
@@ -104,6 +109,36 @@ function helpCommand(arguements, receivedMessage){
 }
 
 
+function weatherCommand(arguements, receivedMessage){
+    if (arguements.length !== 1){
+        receivedMessage.channel.send("One arguement is required. " + 
+        "The number of arguements given are " + arguements.length + 
+        "\n Try `50!-weather London`");
+        return;
+    }
+
+    https.get((weatherUrl + arguements[0] + weatherUrl_key), (resp) => {
+        let data = '';
+
+        resp.on('data', (chunk) => {
+          data += chunk;
+        });
+      
+        resp.on('end', () => {
+
+            let data_obj = JSON.parse(data);
+            let currentTempInC = data_obj["current"]["temp_c"];
+            let currentTempInF = data_obj["current"]["temp_f"];
+            let condition = data_obj["current"]["condition"]["text"];
+
+            receivedMessage.channel.send("The current weather at " + arguements[0] + " is  **" + condition + 
+                "**. \nThe current temperature is  **" + currentTempInC + "°C  /  " + currentTempInF + "°F**");
+        });    
+    }).on("error", (err) => {
+        receivedMessage.channel.send("Error: " + err.message);
+    });
+}
+
 function stockCommand(arguements, receivedMessage){
     if (arguements.length !== 1){
         receivedMessage.channel.send("One arguement is required. " + 
@@ -112,7 +147,7 @@ function stockCommand(arguements, receivedMessage){
         return;
     }
 
-    https.get((url + arguements[0] + url_key), (resp) => {
+    https.get((stockUrl + arguements[0] + stockUrl_key), (resp) => {
         let data = '';
 
         resp.on('data', (chunk) => {
