@@ -71,34 +71,50 @@ function processCommand(receivedMessage){
     } else if(primaryCommand.toLowerCase() == "weather"){
         weatherCommand(arguements, receivedMessage);
     } else {
-        receivedMessage.channel.send("Unknown command. \n\n Try  `50!-help`  for the commands");
+
+        const embedMessage1 = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('Unknown command');
+        const embedMessage2 = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('Try  `50!-help`  for the commands');
+
+        receivedMessage.channel.send(embedMessage1);     
+        receivedMessage.channel.send(embedMessage2);     
     }
 }
 
 function helpCommand(arguements, receivedMessage){
     if (arguements.length > 0){
-        receivedMessage.channel.send("Please try just `50!-help`");
+        const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('Please try just  `50!-help`');
+
+        receivedMessage.channel.send(embedMessage); 
     } else {
         // receivedMessage.channel.send("help is on its way");
-        receivedMessage.channel.send("The following commands are available: \n\n" +
-            "`50!-add` - adds two or more numbers \n" +
-            "`50!-multiply` - multiplies two or more numbers \n" +
-            "`50!-difference` - calculates the diference between two numbers \n" +
-            "`50!-divide` - divides two numbers \n" +
-            "`50!-subtract` - subtracts two numbers \n\n" +
-            "`50!-sq_area` - calculates the area of a square \n" +
-            "`50!-rect_area` - calculates the area of a rectangle \n" +
-            "`50!-cicle_area` - calculates the area of a circle \n" +
-            "`50!-sq_perimeter` - calculates the perimeter of a square \n" +
-            "`50!-rect_perimeter` - calculates the perimeter of a rectangle \n" +
-            "`50!-circle_perimeter` - calculates the perimeter of a circle \n\n" +
-            "`50!-factorial` - calculates the factorial of a number \n" +
-            "`50!-square` - calculates the square of a number \n" +
-            "`50!-sqrt` - calculates the square-root of a number \n" +
-            "`50!-power` - calculates the value of raising a number to the power of another number \n\n" +
-            "`50!-stock` - gets the stock price with a trading symbol\n\n" +
-            "`50!-weather` - gets the current weather of a place \n"                                       
-        );
+
+        const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+            .setTitle('COMMANDS')
+            .setAuthor('AR50', 'https://i.imgur.com/d0ROR0E.png')
+            .setDescription(
+                '`50!-add` - adds two or more numbers \n' +
+                '`50!-multiply` - multiplies two or more numbers \n' +
+                '`50!-difference` - calculates the diference between two numbers \n' +
+                '`50!-divide` - divides two numbers \n' +
+                '`50!-subtract` - subtracts two numbers \n\n' +
+                '`50!-sq_area` - calculates the area of a square \n' +
+                '`50!-rect_area` - calculates the area of a rectangle \n' +
+                '`50!-cicle_area` - calculates the area of a circle \n' + 
+                '`50!-sq_perimeter` - calculates the perimeter of a square \n' +
+                '`50!-rect_perimeter` - calculates the perimeter of a rectangle \n' +
+                '`50!-circle_perimeter` - calculates the perimeter of a circle \n\n' +
+                '`50!-factorial` - calculates the factorial of a number \n' +
+                '`50!-square` - calculates the square of a number \n' +
+                '`50!-sqrt` - calculates the square-root of a number \n' +
+                '`50!-power` - calculates number raised to the power of another number \n\n' +
+                '`50!-stock` - gets the stock price of a publically traded company\n\n' +
+                '`50!-weather` - gets the current weather of a place \n'
+            );
+
+        receivedMessage.channel.send(embedMessage);
     }
 }
 
@@ -132,10 +148,9 @@ function weatherCommand(arguements, receivedMessage){
                 .setTitle("__" + arguements[0].toUpperCase() + "__")
                 .addFields(
                     { name: 'Weather', value: "***" + condition + "***"},
-                    { name: 'Current Temperature', value: "***" + currentTempInC + "**°C" + "/" + "**" + currentTempInF + "**°F*", inline: true},
+                    { name: 'Current Temperature', value: "***" + currentTempInC + "**°C*" + "/" + "***" + currentTempInF + "**°F*", inline: true},
                     { name: '\u200B', value: '\u200B', inline: true},
-                    { name: 'Feels Like', value: "***" + feelsLikeTempInC + "**°C" + "/" + "**" + feelsLikeTempInF + "**°F*", inline: true},
-                    { name: '\u200B', value: '\u200B', inline: true},
+                    { name: 'Feels Like', value: "***" + feelsLikeTempInC + "**°C*" + "/" + "***" + feelsLikeTempInF + "**°F*", inline: true},
                 )
                 .setImage(imageLink)
                 .setTimestamp();
@@ -185,8 +200,7 @@ function stockCommand(arguements, receivedMessage){
                 .setTitle("__" + arguements[0].toUpperCase() + "__")
                 .addFields(
                     { name: 'Stock Price', value: "$***" + price + "*** " + arrow},
-                    { name: 'Net-Change', value: "***" + change + "***"},
-                    { name: 'Net-Change Percentage', value: "***" + changePercentage + "***%"},
+                    { name: 'Net-Change', value: "***" + change + "***" +  " (***" + changePercentage + "***%)"},
                 )
                 .setTimestamp();
 
@@ -209,8 +223,11 @@ function factorialCommand(arguements, receivedMessage){
     for(i = 1; i <= arguements[0]; i++){
         fact = fact * i;
     }
-    receivedMessage.channel.send("The factorial of the number " + arguements + 
-    " is " + fact.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('The factorial of the number ' + arguements + ' is  __***' + fact.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 function squareCommand(arguements, receivedMessage){
@@ -222,8 +239,11 @@ function squareCommand(arguements, receivedMessage){
     }
 
     let sq = Math.pow(arguements[0], 2);
-    receivedMessage.channel.send("The square of the number " + arguements + 
-    " is " + sq.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('The square of the number ' + arguements + ' is  __***' + sq.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 function squarerootCommand(arguements, receivedMessage){
@@ -235,8 +255,11 @@ function squarerootCommand(arguements, receivedMessage){
     }
 
     let sqr = Math.sqrt(arguements[0]);
-    receivedMessage.channel.send("The square-root of of the number " + arguements + 
-    " is " + sqr.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('The square-root of of the number ' + arguements + ' is  __***' + sqr.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 function powerCommand(arguements, receivedMessage){
@@ -248,8 +271,11 @@ function powerCommand(arguements, receivedMessage){
     }
 
     let pow = Math.pow(arguements[0], arguements[1]);
-    receivedMessage.channel.send(arguements[0] + "^" + arguements[1] + 
-    " is equal to " + pow.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle(arguements[0] + ' ^ ' + arguements[1] + ' is equal to  __***' + pow.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 function squarePerimeterCommand(arguements, receivedMessage){
@@ -261,8 +287,11 @@ function squarePerimeterCommand(arguements, receivedMessage){
     }
 
     let peri = 4 * arguements[0];
-    receivedMessage.channel.send("The perimeter of square with a side " + arguements + 
-    " is " + peri.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('The perimeter of square with a side ' + arguements + ' is  __***' + peri.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 function rectanglePerimeterCommand(arguements, receivedMessage){
@@ -274,8 +303,11 @@ function rectanglePerimeterCommand(arguements, receivedMessage){
     }
 
     let peri = 2 * (parseFloat(arguements[0]) + parseFloat(arguements[1]));
-    receivedMessage.channel.send("The perimeter of rectangle with a sides " + 
-    arguements + " is " + peri.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('The perimeter of rectangle with a sides ' + arguements + ' is  __***' + peri.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 function circlePerimeterCommand(arguements, receivedMessage){
@@ -287,8 +319,11 @@ function circlePerimeterCommand(arguements, receivedMessage){
     }
 
     let peri = 2 * 3.14 * (arguements[0]);
-    receivedMessage.channel.send("The perimeter of circle with a radius " + 
-    arguements + " is " + peri.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('The perimeter of circle with a radius ' + arguements + ' is  __***' + peri.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 function squareAreaCommand(arguements, receivedMessage){
@@ -300,8 +335,11 @@ function squareAreaCommand(arguements, receivedMessage){
     }
 
     let area = Math.pow(arguements[0], 2);
-    receivedMessage.channel.send("The area of a square with a side " + arguements + 
-    " is " + area.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('The area of square with a side ' + arguements + ' is  __***' + area.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 function rectangleAreaCommand(arguements, receivedMessage){
@@ -313,8 +351,11 @@ function rectangleAreaCommand(arguements, receivedMessage){
     }
 
     let area = (arguements[0] * arguements[1]);
-    receivedMessage.channel.send("The area of rectangle with a sides " + arguements + 
-    " is " + area.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('The area of rectangle with a sides ' + arguements + ' is  __***' + area.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 function circleAreaCommand(arguements, receivedMessage){
@@ -326,8 +367,11 @@ function circleAreaCommand(arguements, receivedMessage){
     }
 
     let area = 3.14 * (Math.pow(arguements[0], 2));
-    receivedMessage.channel.send("The area of circle with a radius " + arguements + 
-    " is " + area.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('The area of circle with a radius ' + arguements + ' is  __***' + area.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 function divideCommand(arguements, receivedMessage){
@@ -339,8 +383,11 @@ function divideCommand(arguements, receivedMessage){
     } 
 
     let quotient = arguements[0] / arguements[1]; 
-    receivedMessage.channel.send("The quotient of " + arguements + 
-    " is " + quotient.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('The quotient of  ' + arguements[0] + ' / ' + arguements[1] + '  is  __***' + quotient.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 function multiplyCommand(arguements, receivedMessage){
@@ -355,8 +402,11 @@ function multiplyCommand(arguements, receivedMessage){
     arguements.forEach((value) => {
       product = product * parseFloat(value);  
     })
-    receivedMessage.channel.send("The product of " + arguements + 
-    " is " + product.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('The product of ' + arguements + ' is  __***' + product.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 function diffCommand(arguements, receivedMessage){
@@ -368,8 +418,11 @@ function diffCommand(arguements, receivedMessage){
     }
 
     let diff = Math.abs(arguements[0] - arguements[1]);
-    receivedMessage.channel.send("The difference of " + arguements + 
-    " is " + diff.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('The difference of  ' + arguements[0] + ' and ' + arguements[1] + '  is  __***' + diff.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 function subtractCommand(arguements, receivedMessage){
@@ -381,8 +434,11 @@ function subtractCommand(arguements, receivedMessage){
     }
 
     let subt = arguements[0] - arguements[1];
-    receivedMessage.channel.send("The subtraction of " + arguements + 
-    " is " + subt.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('The subtraction of  ' + arguements[1] + ' from ' + arguements[0] + '  is  __***' + subt.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 function addCommand(arguements, receivedMessage){
@@ -397,8 +453,11 @@ function addCommand(arguements, receivedMessage){
     arguements.forEach((value) => {
       sum = sum + parseFloat(value);  
     })
-    receivedMessage.channel.send("The sum of " + arguements + 
-    " is " + sum.toString());
+
+    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle('The sum of ' + arguements + ' is  __***' + sum.toString() + '***__');
+
+    receivedMessage.channel.send(embedMessage);
 }
 
 
