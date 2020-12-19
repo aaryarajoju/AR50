@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const {prefix, token, stockApiKey, weatherApiKey} = require('./config.json');
 const client = new Discord.Client;
 const https = require('https');
-const stockUrl = "https://www.alphavantage.co/query?interval=5min&function=TIME_SERIES_INTRADAY&symbol=";
+const stockUrl = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=";
 const stockUrl_key = "&apikey=" + stockApiKey;
 const weatherUrl = "https://api.weatherapi.com/v1/current.json?q=";
 const weatherUrl_key = "&key=" + weatherApiKey;
@@ -128,18 +128,19 @@ function weatherCommand(arguements, receivedMessage){
             let condition = data_obj["current"]["condition"]["text"];
             let imageLink = "https:" + data_obj["current"]["condition"]["icon"];
 
-            const embedMessage = new Discord.MessageEmbed().setColor('#ff3030')
+            const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
                 .setTitle("__" + arguements[0].toUpperCase() + "__")
                 .addFields(
                     { name: 'Weather', value: "***" + condition + "***"},
                     { name: 'Current Temperature', value: "***" + currentTempInC + "**°C" + "/" + "**" + currentTempInF + "**°F*", inline: true},
                     { name: '\u200B', value: '\u200B', inline: true},
                     { name: 'Feels Like', value: "***" + feelsLikeTempInC + "**°C" + "/" + "**" + feelsLikeTempInF + "**°F*", inline: true},
+                    { name: '\u200B', value: '\u200B', inline: true},
                 )
                 .setImage(imageLink)
                 .setTimestamp();
 
-                receivedMessage.channel.send(embedMessage);
+            receivedMessage.channel.send(embedMessage);
         });    
     }).on("error", (err) => {
         receivedMessage.channel.send("Error: " + err.message);
@@ -165,9 +166,31 @@ function stockCommand(arguements, receivedMessage){
 
             let data_obj = JSON.parse(data);
             let lastRefresh = data_obj["Meta Data"]["3. Last Refreshed"];
-            let price = data_obj["Time Series (5min)"][lastRefresh]["4. close"];
+            let price = data_obj["Time Series (Daily)"][lastRefresh]["4. close"];
+            let prevPrice = Object.values(Object.values(Object.values(data_obj)[1])[1])[3];
+            let change = price - prevPrice;
+            let changePercentage = (change / prevPrice) * 100;
+            let arrow = "";
 
-            receivedMessage.channel.send("The stock price of " + arguements[0] + " is  $" + price);
+            change = (change).toFixed(2);
+            changePercentage = (changePercentage).toFixed(2);
+
+            if (change > 0){
+                arrow = "▲";
+            } else if (change < 0){
+                arrow = "▼";
+            }
+
+            const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+                .setTitle("__" + arguements[0].toUpperCase() + "__")
+                .addFields(
+                    { name: 'Stock Price', value: "$***" + price + "*** " + arrow},
+                    { name: 'Net-Change', value: "***" + change + "***"},
+                    { name: 'Net-Change Percentage', value: "***" + changePercentage + "***%"},
+                )
+                .setTimestamp();
+
+            receivedMessage.channel.send(embedMessage);
         });    
     }).on("error", (err) => {
         receivedMessage.channel.send("Error: " + err.message);
