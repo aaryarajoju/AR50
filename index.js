@@ -126,16 +126,20 @@ function weatherCommand(arguements, receivedMessage){
             let feelsLikeTempInC = data_obj["current"]["feelslike_c"];
             let feelsLikeTempInF = data_obj["current"]["feelslike_f"];
             let condition = data_obj["current"]["condition"]["text"];
-
             let imageLink = "https:" + data_obj["current"]["condition"]["icon"];
-            console.log(imageLink);
-            let embedIcon = new Discord.MessageEmbed().setImage(imageLink);
 
-            receivedMessage.channel.send(embedIcon);
-            receivedMessage.channel.send( 
-                "\nThe current weather at " + arguements[0] + " is  **" + condition + 
-                "**. \nThe current temperature is  **" + currentTempInC + "°C**  /  **" + currentTempInF + 
-                "°F**. \nIt feels like **" + feelsLikeTempInC + "°C**  /  **" + feelsLikeTempInF + "°F**");
+            const embedMessage = new Discord.MessageEmbed().setColor('#ff3030')
+                .setTitle("__" + arguements[0].toUpperCase() + "__")
+                .addFields(
+                    { name: 'Weather', value: "***" + condition + "***"},
+                    { name: 'Current Temperature', value: "***" + currentTempInC + "**°C" + "/" + "**" + currentTempInF + "**°F*", inline: true},
+                    { name: '\u200B', value: '\u200B', inline: true},
+                    { name: 'Feels Like', value: "***" + feelsLikeTempInC + "**°C" + "/" + "**" + feelsLikeTempInF + "**°F*", inline: true},
+                )
+                .setImage(imageLink)
+                .setTimestamp();
+
+                receivedMessage.channel.send(embedMessage);
         });    
     }).on("error", (err) => {
         receivedMessage.channel.send("Error: " + err.message);
