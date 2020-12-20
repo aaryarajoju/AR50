@@ -43,8 +43,8 @@ The list of commands are as follows:
 * [x] Stock Figures
 * [x] Weather
 * [x] Basic Mathematical functions
-* [ ] Reminder
-* [ ] Tasks / To-Do List
+* [ ]
+* [ ]
 
 ---
 
