@@ -58,7 +58,7 @@ And then, add a file called `config.json` in the same directory, which should co
 
 ````json
 {
-    "prefix": "50!-", //You can change the prefix, if you wish
+    "prefix": "50!-", /*You can change the prefix, if you wish*/
     "token": "<the bot token>",
     "stockApiKey": "<the api key from Alpha Vantage>",
     "weatherApiKey": "<the api key from Weather API>"
