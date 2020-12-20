@@ -1,5 +1,7 @@
 # AR50
 
+![AR50-logo](https://i.imgur.com/d0ROR0E.png)
+
 ## Introduction
 
 AR50 is a discord bot, capable of doing a lot of miscellaneous tasks, like showing the current weather, getting stock details, and some mathematical functions.
