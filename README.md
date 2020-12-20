@@ -8,8 +8,8 @@ AR50 is a discord bot built using [Discord.JS](https://discord.js.org/#/), capab
 
 ## Add it to your server
 
-<i>[NOTE: this project is currently in beta]</i>
-[Invite the bot to your server](https://discord.com/api/oauth2/authorize?client_id=786238151509016628&permissions=182336&scope=bot)
+<i>[NOTE: this project is currently in beta]</i> <br>
+[Invite the bot to your server](https://discord.com/api/oauth2/authorize?client_id=786238151509016628&permissions=182336&scope=bot) <br>
 (You need to have the `Manage Server` permission for the server you want to add the bot to)
 
 ## Commands
@@ -52,8 +52,8 @@ The list of commands are as follows:
 
 Prerequisites: [Node.JS](https://nodejs.org/en/) (and [npm](https://www.npmjs.com/)), your bot's token, an api key from [Alpha Vantage](https://www.alphavantage.co/), and an api key from [Weather API](https://www.weatherapi.com/).
 
-Fork [the repository](https://github.com/aaryarajoju/AR50), and then clone it to your local device.
-In that directory, install [Discord.JS](https://discord.js.org/#/) with the command `npm install discord.js`.
+Fork [the repository](https://github.com/aaryarajoju/AR50), and then clone it to your local device. <br>
+In that directory, install [Discord.JS](https://discord.js.org/#/) with the command `npm install discord.js`. <br>
 And then, add a file called `config.json` in the same directory, which should contain the following code:
 
 ````json
