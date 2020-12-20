@@ -148,9 +148,9 @@ function weatherCommand(arguements, receivedMessage){
                 .setTitle("__" + arguements[0].toUpperCase() + "__")
                 .addFields(
                     { name: 'Weather', value: "***" + condition + "***"},
-                    { name: 'Current Temperature', value: "* **" + currentTempInC + "**°C *" + "/" + "* **" + currentTempInF + "**°F *", inline: true},
+                    { name: 'Current Temperature', value: "***" + currentTempInC + "**°C*" + "/" + "***" + currentTempInF + "**°F*", inline: true},
                     // { name: '\u200B', value: '\u200B', inline: true},
-                    { name: 'Feels Like', value: "* **" + feelsLikeTempInC + "**°C *" + "/" + "* **" + feelsLikeTempInF + "**°F *", inline: true},
+                    { name: 'Feels Like', value: "***" + feelsLikeTempInC + "**°C*" + "/" + "***" + feelsLikeTempInF + "**°F*", inline: true},
                 )
                 .setImage(imageLink)
                 .setTimestamp();
