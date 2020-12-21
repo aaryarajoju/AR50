@@ -95,6 +95,8 @@ function helpCommand(arguements, receivedMessage){
             .setTitle('COMMANDS')
             .setAuthor('AR50', 'https://i.imgur.com/d0ROR0E.png')
             .setDescription(
+                '`50!-weather` - gets the current weather of a place \n\n' +
+                '`50!-stock` - gets the stock price of a publically traded company\n\n' +
                 '`50!-add` - adds two or more numbers \n' +
                 '`50!-multiply` - multiplies two or more numbers \n' +
                 '`50!-difference` - calculates the diference between two numbers \n' +
@@ -109,9 +111,7 @@ function helpCommand(arguements, receivedMessage){
                 '`50!-factorial` - calculates the factorial of a number \n' +
                 '`50!-square` - calculates the square of a number \n' +
                 '`50!-sqrt` - calculates the square-root of a number \n' +
-                '`50!-power` - calculates number raised to the power of another number \n\n' +
-                '`50!-stock` - gets the stock price of a publically traded company\n\n' +
-                '`50!-weather` - gets the current weather of a place \n'
+                '`50!-power` - calculates number raised to the power of another number \n'
             );
 
         receivedMessage.channel.send(embedMessage);
