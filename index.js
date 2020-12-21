@@ -72,9 +72,9 @@ function processCommand(receivedMessage){
         weatherCommand(arguements, receivedMessage);
     } else {
 
-        const embedMessage1 = new Discord.MessageEmbed().setColor('#FF004D')
+        const embedMessage1 = new Discord.MessageEmbed().setColor('#7D0F00')
                 .setTitle('Unknown command');
-        const embedMessage2 = new Discord.MessageEmbed().setColor('#FF004D')
+        const embedMessage2 = new Discord.MessageEmbed().setColor('#7D0F00')
                 .setTitle('Try  `50!-help`  for the commands');
 
         receivedMessage.channel.send(embedMessage1);     
@@ -84,14 +84,14 @@ function processCommand(receivedMessage){
 
 function helpCommand(arguements, receivedMessage){
     if (arguements.length > 0){
-        const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+        const embedMessage = new Discord.MessageEmbed().setColor('#0FDCFF')
                 .setTitle('Please try just  `50!-help`');
 
         receivedMessage.channel.send(embedMessage); 
     } else {
         // receivedMessage.channel.send("help is on its way");
 
-        const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+        const embedMessage = new Discord.MessageEmbed().setColor('#0FDCFF')
             .setTitle('COMMANDS')
             .setAuthor('AR50', 'https://i.imgur.com/d0ROR0E.png')
             .setDescription(
@@ -196,7 +196,7 @@ function stockCommand(arguements, receivedMessage){
                 arrow = "▼";
             }
 
-            const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+            const embedMessage = new Discord.MessageEmbed().setColor('#0FFFC5')
                 .setTitle("__" + arguements[0].toUpperCase() + "__")
                 .addFields(
                     { name: 'Stock Price', value: "$***" + price + "*** " + arrow},
@@ -224,8 +224,8 @@ function factorialCommand(arguements, receivedMessage){
         fact = fact * i;
     }
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
-                .setTitle('The factorial of the number ' + arguements + ' is  __***' + fact.toString() + '***__');
+    const embedMessage = new Discord.MessageEmbed().setColor('#9E23F4')
+                .setTitle('The factorial of the number  ' + arguements + '  is  __***' + fact.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
 }
@@ -240,8 +240,8 @@ function squareCommand(arguements, receivedMessage){
 
     let sq = Math.pow(arguements[0], 2);
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
-                .setTitle('The square of the number ' + arguements + ' is  __***' + sq.toString() + '***__');
+    const embedMessage = new Discord.MessageEmbed().setColor('#9E23F4')
+                .setTitle('The square of the number  ' + arguements + '  is  __***' + sq.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
 }
@@ -256,8 +256,8 @@ function squarerootCommand(arguements, receivedMessage){
 
     let sqr = Math.sqrt(arguements[0]);
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
-                .setTitle('The square-root of of the number ' + arguements + ' is  __***' + sqr.toString() + '***__');
+    const embedMessage = new Discord.MessageEmbed().setColor('#9E23F4')
+                .setTitle('The square-root of of the number  ' + arguements + '  is  __***' + sqr.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
 }
@@ -272,8 +272,8 @@ function powerCommand(arguements, receivedMessage){
 
     let pow = Math.pow(arguements[0], arguements[1]);
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
-                .setTitle(arguements[0] + ' ^ ' + arguements[1] + ' is equal to  __***' + pow.toString() + '***__');
+    const embedMessage = new Discord.MessageEmbed().setColor('#9E23F4')
+                .setTitle(arguements[0] + ' ^ ' + arguements[1] + '  is equal to  __***' + pow.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
 }
@@ -288,8 +288,8 @@ function squarePerimeterCommand(arguements, receivedMessage){
 
     let peri = 4 * arguements[0];
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
-                .setTitle('The perimeter of square with a side ' + arguements + ' is  __***' + peri.toString() + '***__');
+    const embedMessage = new Discord.MessageEmbed().setColor('#F4BB4E')
+                .setTitle('The perimeter of square with a side  ' + arguements + '  is  __***' + peri.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
 }
@@ -304,8 +304,8 @@ function rectanglePerimeterCommand(arguements, receivedMessage){
 
     let peri = 2 * (parseFloat(arguements[0]) + parseFloat(arguements[1]));
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
-                .setTitle('The perimeter of rectangle with a sides ' + arguements + ' is  __***' + peri.toString() + '***__');
+    const embedMessage = new Discord.MessageEmbed().setColor('#F4BB4E')
+                .setTitle('The perimeter of rectangle with a sides  ' + arguements + '  is  __***' + peri.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
 }
@@ -320,8 +320,8 @@ function circlePerimeterCommand(arguements, receivedMessage){
 
     let peri = 2 * 3.14 * (arguements[0]);
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
-                .setTitle('The perimeter of circle with a radius ' + arguements + ' is  __***' + peri.toString() + '***__');
+    const embedMessage = new Discord.MessageEmbed().setColor('#F4BB4E')
+                .setTitle('The perimeter of circle with a radius  ' + arguements + '  is  __***' + peri.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
 }
@@ -336,8 +336,8 @@ function squareAreaCommand(arguements, receivedMessage){
 
     let area = Math.pow(arguements[0], 2);
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
-                .setTitle('The area of square with a side ' + arguements + ' is  __***' + area.toString() + '***__');
+    const embedMessage = new Discord.MessageEmbed().setColor('#F4E34E')
+                .setTitle('The area of square with a side  ' + arguements + '  is  __***' + area.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
 }
@@ -352,8 +352,8 @@ function rectangleAreaCommand(arguements, receivedMessage){
 
     let area = (arguements[0] * arguements[1]);
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
-                .setTitle('The area of rectangle with a sides ' + arguements + ' is  __***' + area.toString() + '***__');
+    const embedMessage = new Discord.MessageEmbed().setColor('#F4E34E')
+                .setTitle('The area of rectangle with a sides  ' + arguements + '  is  __***' + area.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
 }
@@ -368,8 +368,8 @@ function circleAreaCommand(arguements, receivedMessage){
 
     let area = 3.14 * (Math.pow(arguements[0], 2));
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
-                .setTitle('The area of circle with a radius ' + arguements + ' is  __***' + area.toString() + '***__');
+    const embedMessage = new Discord.MessageEmbed().setColor('#F4E34E')
+                .setTitle('The area of circle with a radius  ' + arguements + '  is  __***' + area.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
 }
@@ -384,7 +384,7 @@ function divideCommand(arguements, receivedMessage){
 
     let quotient = arguements[0] / arguements[1]; 
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+    const embedMessage = new Discord.MessageEmbed().setColor('#F17D6D')
                 .setTitle('The quotient of  ' + arguements[0] + ' / ' + arguements[1] + '  is  __***' + quotient.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
@@ -403,7 +403,7 @@ function multiplyCommand(arguements, receivedMessage){
       product = product * parseFloat(value);  
     })
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+    const embedMessage = new Discord.MessageEmbed().setColor('#F17D6D')
                 .setTitle('The product of ' + arguements + ' is  __***' + product.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
@@ -419,7 +419,7 @@ function diffCommand(arguements, receivedMessage){
 
     let diff = Math.abs(arguements[0] - arguements[1]);
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+    const embedMessage = new Discord.MessageEmbed().setColor('#F17D6D')
                 .setTitle('The difference of  ' + arguements[0] + ' and ' + arguements[1] + '  is  __***' + diff.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
@@ -435,7 +435,7 @@ function subtractCommand(arguements, receivedMessage){
 
     let subt = arguements[0] - arguements[1];
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
+    const embedMessage = new Discord.MessageEmbed().setColor('#F17D6D')
                 .setTitle('The subtraction of  ' + arguements[1] + ' from ' + arguements[0] + '  is  __***' + subt.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
@@ -454,8 +454,8 @@ function addCommand(arguements, receivedMessage){
       sum = sum + parseFloat(value);  
     })
 
-    const embedMessage = new Discord.MessageEmbed().setColor('#FF004D')
-                .setTitle('The sum of ' + arguements + ' is  __***' + sum.toString() + '***__');
+    const embedMessage = new Discord.MessageEmbed().setColor('#F17D6D')
+                .setTitle('The sum of  ' + arguements + '  is  __***' + sum.toString() + '***__');
 
     receivedMessage.channel.send(embedMessage);
 }
