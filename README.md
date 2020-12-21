@@ -20,13 +20,17 @@ AR50 is a discord bot built using [Discord.JS](https://discord.js.org/#/), capab
 
 The list of commands are as follows:
 
+* `50!-help` - shows all of the available commands.
+
+<p align="center"> <img width='300' src="https://i.imgur.com/ykGzjsK.png"/> </p>
+
 * `50!-weather` - gets the weather details of a location using the [Weather API](https://www.weatherapi.com/) and displays the current weather condition, the current temperature, the temperature it feels like, and a picture of the weather condition.
 
-<p align="center"> <img width='250' src="https://i.imgur.com/2YSrV0S.png"/> </p>
+<p align="center"> <img width='250' src="https://i.imgur.com/6z5E0A3.png"/> </p>
 
 * `50!-stock` - gets the stock details of a publically traded entity, using the [Alpha Vantage API](https://www.alphavantage.co/), and shows the current stock price, along with the net change and net change percentage.
 
-<p align="center"> <img width='250' src="https://i.imgur.com/DvZJU7c.png"/> </p>
+<p align="center"> <img width='250' src="https://i.imgur.com/J0SLBFT.png"/> </p>
 
 * `50!-sq_area`, `50!-rect_area`, and `50!-circle_area` - calculates the area of a square, rectangle and a circle, respectively
 
@@ -36,15 +40,11 @@ The list of commands are as follows:
 
 ---
 
-## Planned for the v1.0 release
-
-<i>(Current: <b>v0.4</b>)</i>
+## The v1.0
 
 * [x] Stock Figures
-* [x] Weather   
+* [x] Weather
 * [x] Basic Mathematical functions
-* [ ]
-* [ ]
 
 ---
 
