@@ -8,7 +8,7 @@ AR50 is a discord bot built using [Discord.JS](https://discord.js.org/#/), capab
 
 ## Add it to your server
 
-<i>[NOTE: this project is currently in beta]</i> <br>
+<i>[NOTE: the bot won't be up 24/7]</i> <br>
 [Invite the bot to your server](https://discord.com/api/oauth2/authorize?client_id=786238151509016628&permissions=182336&scope=bot) <br>
 (You need to have the `Manage Server` permission for the server you want to add the bot to)
 
@@ -41,7 +41,7 @@ The list of commands are as follows:
 <i>(Current: <b>v0.4</b>)</i>
 
 * [x] Stock Figures
-* [x] Weather
+* [x] Weather   
 * [x] Basic Mathematical functions
 * [ ]
 * [ ]
@@ -58,12 +58,14 @@ And then, add a file called `config.json` in the same directory, which should co
 
 ````json
 {
-    "prefix": "50!-", /*You can change the prefix, if you wish*/
+    "prefix": "50!-", 
     "token": "<the bot token>",
     "stockApiKey": "<the api key from Alpha Vantage>",
     "weatherApiKey": "<the api key from Weather API>"
 }
 ````
+
+(*You can change the prefix, if you wish*)
 
 For running the program, use the command `node index.js` in the same directory.
 
