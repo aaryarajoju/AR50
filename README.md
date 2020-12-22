@@ -32,6 +32,12 @@ The list of commands are as follows:
 
 <p align="center"> <img width='250' src="https://i.imgur.com/J0SLBFT.png"/> </p>
 
+* `50!-factorial` - calculates the factorial of a number
+
+* `50!-power` - calculates the value of raising a number to the power of a second number
+
+* `50!-square`, and `50!-sqrt` - calculates the square and square root of a number, respectively
+
 * `50!-sq_area`, `50!-rect_area`, and `50!-circle_area` - calculates the area of a square, rectangle and a circle, respectively
 
 * `50!-sq_perimeter`, `50!-rect_perimeter`, and `50!-circle_perimeter` - calculates the perimeter of a square, rectangle and a circle, respectively
