@@ -1,5 +1,7 @@
 # AR50
 
+[![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/aaryarajoju/ar50)
+
 <p align="center"> <img width='100' src="https://i.imgur.com/d0ROR0E.png"/> </p>
 
 ## Introduction
